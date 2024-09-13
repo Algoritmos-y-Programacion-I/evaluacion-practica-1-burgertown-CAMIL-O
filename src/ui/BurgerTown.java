@@ -100,33 +100,82 @@ public class BurgerTown {
 
     }
 
+  
+    /**
+     * Descripción: Este metodo pide al usuario registrar el precio y la cantidad de cada plato y los almacena. 
+     * pre: Los arreglos precios y unidades deben estar inicializados
+     * pos: los datos en cada posicion del arreglo queda guardada.
+     */
+
     public static void solicitarDatos(){
 
+         for (int i = 0; i < precios.length; i++) {
+            System.out.println("\nDigite el precio del plato " + (i + 1) + ": ");
+            precios[i] = reader.nextDouble(); 
+
+            System.out.println("Digite la cantidad vendida del plato " + (i + 1) + ": ");
+            unidades[i] = reader.nextInt(); 
+        }
      
     }
 
+    /**
+     * Descripción: Este método calcula la cantidad total de platos vendidos.
+     * pre: El arreglo unidades deben estar inicializado.
+     * pos: se le presenta al usuario la variable con la cantidad de platos vendidos. 
+     * @return La cantidad total de platos vendidos.
+     */
+
     public static int calcularTotalPlatosVendidos(){
+        int totalP = 0;
+        for (int cantidad : unidades){
+            totalP +=cantidad;
+        }
 
-        return 0;
-
+        return totalP; 
     }
+    
+
+    /**
+     * Descripcion: Este metodo calcula el promedio total de los precios de todos los platos. 
+     * pre: El arreglo precio debe estar inicializado. 
+     * pos: Le es presentado al usuario la variable que contiene el precio promedio de platos
+     * @return el precio promedio de los platos que se vendieron. 
+     */
 
     public static double calcularPrecioPromedio(){
+        double sumaP = 0;
 
-        return 0;
-
+        for (int i=0; i< precios.length ; i++){
+            sumaP += precios[i];
+        }
+        return  sumaP / precios.length;
     }
 
+     /**
+     * Descripción: Este metodo calcula las ventas totales de todos los platos en el dia.
+     * pre: Los arreglos precios y unidades deben estar inicializados.
+     * pos: se presenta el total de las ventas al usuario. 
+     * @return Las ventas totales durante el día.
+     */
     public static double calcularVentasTotales(){
-
-        return 0;
+        double totalVentas = 0;
+        for(int i=0; i<precios.length; i++){
+            totalVentas += precios[i] * unidades[i];
+        }
+        return totalVentas;
 
     }
 
     public static int consultarPlatosSobreLimite(double limite){
+        int contador=0; 
+            for (int i =0; i <precios.length; i++){
+                if (precios[i]*unidades[i] > limite){
+                    contador++; 
+                }
 
-        return 0;
+            }
+        return contador;
 
     }
-
 }
